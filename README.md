@@ -55,8 +55,8 @@ email the corresponding author of the program.
 ## Hubbard
 * `corrMat.m`: uses the MPO × MPS method to caluclate the range-3 local correlation
   matrix of the Fermi-Hubbard model. From the kernal of the correlation matrix
-  we can determine $\hat{\Delta}$ and $\hat{P}$, their random sum is stored in
-  the file `Local_Operator_Rand.mat`;
+  we can determine positive semidifinte Δ operators and projection operators,
+  their random sum is stored in the file `Local_Operator_Rand.mat`;
 * `KerProjH.m`: the original Matlab implementation of the recursive method for
   calculating the ground-state manifold of a projector Hamiltonian. After
   navigating Matlab to the `Hubbard` directory, run, e.g.
