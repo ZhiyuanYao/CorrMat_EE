@@ -55,16 +55,10 @@ email the corresponding author of the program.
 ## Hubbard
 * `corrMat.m`: uses the MPO × MPS method to caluclate the range-3 local correlation
   matrix of the Fermi-Hubbard model. From the kernal of the correlation matrix
-  we can determine positive semidifinte Δ operators and projection operators,
-  their random sum is stored in the file `Local_Operator_Rand.mat`;
+  we can determine positive semidifinte Δ operators and their random average `Delta_ave`.
+  To determine the ground-state degeneracy, one can call, e.g.
+  `KerProjH(Delta_ave, 4, LMin, LMax)` to determine the values from system size
+  `LMin` to `LMax`.
 * `KerProjH.m`: the original Matlab implementation of the recursive method for
-  calculating the ground-state manifold of a projector Hamiltonian. After
-  navigating Matlab to the `Hubbard` directory, run, e.g.
-  ```matlab
-  >> load('Local_Operator_Rand.mat')
-  >> NSites_min = 4; NSites_max = 32;
-  >> [Deg_OBC,Deg_PBC] = KerProjH(Local_Operator_Rand, 4, NSites_min, NSites_max)
-  ```
-  to get the ground-state dengeracy under both the PBC and OBC conditions for
-  system size ranging from `NSites_min=4` to `NSites_max=32`.
+  calculating the ground-state manifold of a projector Hamiltonian.
 * `plots/Hubbard.py`: plots Fig. S1 in the supplementary material.
