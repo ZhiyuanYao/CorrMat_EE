@@ -340,9 +340,14 @@ end
 function getProj(L::Int; N::Int)
     Aarray, lamvals = getAarray(L, N=N)
     Proj = zeros(ComplexF64, 3^range_, 3^range_)
-    # this part is very time consuming
-    # 152.006407 seconds (9.49 M allocations: 250.803 GiB, 11.66% gc time)
-    for (i, λ) in enumerate(lamvals[1:10])
+    #--------------------------------------------------------------------------
+    # this part is very time consuming, e.g. running only 1:10 
+    # for (i, λ) in enumerate(lamvals[1:10])
+    # takes 152.006407 seconds (9.49 M allocations: 250.803 GiB, 11.66% gc time)
+    #
+    # The k=5 data all come from our workstation, which takes around 2~3 weeks
+    #--------------------------------------------------------------------------
+    for (i, λ) in enumerate(lamvals)
         vec = Aarray[:, i]
         A = spzeros(ComplexF64, 3^range_, 3^range_)
         for i in 1:dimLH
